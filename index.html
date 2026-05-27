@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HR Resources Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Global */
+html,body{margin:0;padding:0;height:100%;font-family:'Inter',system-ui,sans-serif;overflow:hidden;}
+/* Vibrant animated background */
+body{background:linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+background-size:400% 400%;animation:gradientShift 12s ease infinite;}
+@keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+/* Welcome */
+#welcome{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(8px);background:rgba(255,255,255,0.5);color:#222;text-align:center;}
+#welcome h1{font-size:2.8rem;margin:.2rem 0;}
+#welcome p{margin:.6rem 0 1.8rem;opacity:.9;font-weight:500;}
+.loader{width:2.6rem;height:2.6rem;border:4px solid rgba(255,255,255,.2);border-top-color:#fffa;border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* Dashboard */
+#dashboard{display:none;flex-direction:column;min-height:100%;}
+header{padding:2.8rem 1rem;font-size:2.2rem;font-weight:600;text-align:center;color:#222;}
+.grid{display:grid;gap:2rem;padding:2rem;max-width:1320px;margin:auto;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
+.card{position:relative;padding:2.6rem 2rem;text-align:center;border-radius:1.2rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;overflow:hidden;background:rgba(255,255,255,0.85);backdrop-filter:blur(14px);box-shadow:0 8px 20px rgba(0,0,0,.25);}
+.card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,.45);}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.02));opacity:.3;}
+.card h2{margin:.8rem 0;font-size:1.45rem;font-weight:500;color:#111;}
+/* ------------------- Utility ------------------- */
+.centered{display:flex;align-items:center;justify-content:center;}
+/* Overlay removed – navigation now opens links directly */
+</style>
+</head>
+<body>
+<!-- Welcome -->
+<section id="welcome" class="centered">
+<h1>Welcome Back HR</h1>
+<p>Created by <strong>Parmita &amp; Kritesh</strong></p>
+<div class="loader" aria-hidden="true"></div>
+</section>
+<!-- Dashboard -->
+<section id="dashboard">
+<header>HR Resources Hub</header>
+<div class="grid">
+<div class="card" data-href="https://avaada-organization-chart.netlify.app/">
+  <h2>Organization Chart</h2>
+</div>
+<div class="card" data-href="https://avaada-hr-dashboard.netlify.app/">
+  <h2>HR Dashboard</h2>
+</div>
+<div class="card" data-href="https://asdfesf33333.github.io/KPI-Directory/">
+  <h2>KPI Directory</h2>
+</div>
+<div class="card" data-href="https://asdfesf33333.github.io/IR-Analysis/">
+  <h2>IR Analysis</h2>
+</div>
+<div class="card" data-href="https://asdfesf33333.github.io/Predictive-Attrition/">
+  <h2>Predictive Attrition</h2>
+</div>
+</div>
+</section>
+
+<!-- Overlay removed – direct navigation used -->
+
+<script>
+// Show dashboard after splash (4s) on every load
+setTimeout(() => {
+  document.getElementById('welcome').style.display = 'none';
+  const dash = document.getElementById('dashboard');
+  dash.style.display = 'flex';
+}, 4000);
+
+  // Open external links in new tabs when cards are clicked
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const url = card.dataset.href;
+      window.open(url, '_blank');
+    });
+  });</script>
+</body>
+</html>
